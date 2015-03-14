@@ -28,9 +28,9 @@
 		 * text. We're also not allowing the user to select more than one image.
 		 */
 		file_frame = wp.media.frames.file_frame = wp.media({
-			title:    "Browse Images",
+			title:    efi_strings.browse_images,
 			button:   {
-				text: "Set featured image"
+				text: efi_strings.select_image
 			},
 			multiple: false
 		});
@@ -92,30 +92,30 @@
         return false;
     });
 
-    $(document).on( 'click', '.efi-remove-image', function() {
-        efi_thumbnail = $(this).parents( '.efi-thumbnail' );
-        nonce = $(this).data('nonce');
-        var url = $(this).attr('href');
-        var post_id = parseInt( efi_thumbnail.parents('tr:first').attr('id').replace( 'post-', '' ) );
+$(document).on( 'click', '.efi-remove-image', function() {
+    efi_thumbnail = $(this).parents( '.efi-thumbnail' );
+    nonce = $(this).data('nonce');
+    var url = $(this).attr('href');
+    var post_id = parseInt( efi_thumbnail.parents('tr:first').attr('id').replace( 'post-', '' ) );
 
-        efi_thumbnail.addClass( 'no-image' );
+    efi_thumbnail.addClass( 'no-image' );
 
-        var choose_image = $('<a>').attr({
-            href : url,
-            'data-nonce' : nonce,
-            class : 'efi-choose-image'
-        }).html("<i class='dashicons dashicons-plus'></i> <br> add image</a>")
+    var choose_image = $('<a>').attr({
+        href : url,
+        'data-nonce' : nonce,
+        class : 'efi-choose-image'
+    }).html("<i class='dashicons dashicons-plus'></i> <br> add image</a>")
 
-        efi_thumbnail.find('.efi-images').html(choose_image);
+    efi_thumbnail.find('.efi-images').html(choose_image);
 
-        $.post( efi_strings.ajaxurl, {
-            _ajax_nonce: nonce,
-            post_id : post_id,
-            thumbnail_id : -1,
-            action: 'set-post-thumbnail'
-        })
-
-        return false;
+    $.post( efi_strings.ajaxurl, {
+        _ajax_nonce: nonce,
+        post_id : post_id,
+        thumbnail_id : -1,
+        action: 'set-post-thumbnail'
     })
+
+    return false;
+})
 
 })( jQuery );

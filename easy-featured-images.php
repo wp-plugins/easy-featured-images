@@ -76,9 +76,9 @@ add_action( 'manage_post_posts_custom_column', 'efi_column_content', 10, 2 );
  *
  * @param $column string
  */
-function efi_column_content( $column_name, $post_id ) {
+function efi_column_content( $column_slug, $post_id ) {
 
-	if ( '_post_thumbnail' == $column_name ) {
+	if ( '_post_thumbnail' == $column_slug ) {
 
 		$nonce = wp_create_nonce( "set_post_thumbnail-" . $post_id );
 		$no_image = ( has_post_thumbnail( $post_id ) ) ? '' : 'no-image';
