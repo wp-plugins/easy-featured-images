@@ -1,0 +1,77 @@
+/* Maximum column width */
+.manage-column.column-_post_thumbnail {
+    width:72px;
+}
+
+/* Makes sure large images can be laid over the table */
+._post_thumbnail.column-_post_thumbnail {
+    overflow:visible;
+}
+
+/* Makes sure that absolutely positioned elements within are aligned to this element */
+.efi-thumbnail {
+    position:relative;
+}
+
+/* Maximum thumbnail size */
+.efi-thumbnail .attachment-thumbnail {
+    max-width:72px;
+    max-height:72px;
+}
+
+/* Positioning of the medium size image display */
+.efi-thumbnail .attachment-medium {
+    position:absolute;
+    top:0px;
+    left:0px;
+    display:none;
+}
+
+/* Show larger image when hovering over the smaller one */
+.efi-images:hover .attachment-medium {
+    display:block;
+    z-index:4000;
+}
+
+/* No image styling */
+.efi-thumbnail.no-image a.efi-choose-image {
+    display:block;
+    height:70px;
+    width:70px;
+    border:1px dashed #aaa;
+    font-size:11px;
+    text-align:center;
+    display: table-cell;
+    vertical-align:middle;
+    color:#aaa;
+    -webkit-transition: all .1s ease-in 0;
+    transition: all .1s ease-in 0;
+}
+.efi-thumbnail.no-image a.efi-choose-image:hover {
+    color:#0074a2;
+    border-color: #0074a2;
+}
+.efi-thumbnail.no-image a.efi-choose-image .dashicons {
+    transition:none;
+    -webkit-transition: none;
+}
+
+
+/* Image removal link style */
+.efi-remove-image {
+    font-size:11px;
+    color: #aaa;
+}
+.efi-remove-image .dashicons {
+    font-size:10px;
+    width:10px;
+    height:10px;
+    line-height:11px;
+    vertical-align:middle;
+}
+.efi-remove-image:hover {
+    color: #aa0000;
+}
+.efi-thumbnail.no-image .efi-remove-image{
+    display:none;
+}
