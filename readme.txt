@@ -35,6 +35,7 @@ If you are having trouble, take a look at the [Managing Plugins](http://codex.wo
 == Screenshots ==
 
 1. The post edit screen
+2. WooCommerce Support
 
 == Changelog ==
 
