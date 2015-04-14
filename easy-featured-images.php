@@ -2,11 +2,23 @@
 /*
 Plugin Name:       Easy Featured Images
 Description:       Adds featured images to the admin post lists and allows you to add and modify them without loading the post's edit page.
-Version:           1.1.1
+Version:           1.1.2
 Author:            Daniel Pataki
 Author URI:        http://danielpataki.com/
 License:           GPLv2 or later
 */
+
+add_action('init', 'efi_load_textdomain');
+
+/**
+ * Load Text Domain
+ * 
+ * Loads the textdomain for translations
+ *
+ */
+function efi_load_textdomain() {
+	load_plugin_textdomain( 'easy-featured-images', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
+}
 
 
 add_action( 'init', 'efi_admin_list_modifications' ) ;
@@ -65,7 +77,9 @@ function efi_enqueue_assets( $page ) {
 	wp_localize_script( 'efi_scripts', 'efi_strings', array(
 		'browse_images' => __( 'Browse Or Upload An Image', 'easy-featured-images' ),
 		'select_image' =>  __( 'Set featured image', 'easy-featured-images' ),
-		'ajaxurl' =>  admin_url( 'admin-ajax.php' )
+		'ajaxurl' =>  admin_url( 'admin-ajax.php' ),
+		'add_image' =>  __( 'add image', 'easy-featured-images' ),
+		'remove' =>  __( 'remove', 'easy-featured-images' )
 	));
 
 }
@@ -129,12 +143,12 @@ function efi_column_content( $column_slug, $post_id ) {
 			echo "<a class='efi-choose-image' data-nonce='" . $nonce . "' href='" . get_edit_post_link( $post_id ) . "'>" . get_the_post_thumbnail( $post_id, 'medium' ) . '</a>';
 		}
 		else {
-			echo "<a class='efi-choose-image' data-nonce='" . $nonce . "' href='" . get_edit_post_link( $post_id ) . "'> <i class='dashicons dashicons-plus'></i> <br> add image</a>";
+			echo "<a class='efi-choose-image' data-nonce='" . $nonce . "' href='" . get_edit_post_link( $post_id ) . "'> <i class='dashicons dashicons-plus'></i> <br> ". __('add image','easy-featured-images') . "</a>";
 		}
 
 		echo '</div>';
 
-		echo "<a href='" . get_edit_post_link( $post_id ) . "' data-nonce='" . $nonce . "' class='efi-remove-image'><i class='dashicons dashicons-no'></i> remove</a>";
+		echo "<a href='" . get_edit_post_link( $post_id ) . "' data-nonce='" . $nonce . "' class='efi-remove-image'><i class='dashicons dashicons-no'></i> ". __( 'remove','easy-featured-images') . "</a>";
 
 		echo '</div>';
 

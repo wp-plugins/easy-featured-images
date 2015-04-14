@@ -104,7 +104,7 @@ $(document).on( 'click', '.efi-remove-image', function() {
         href : url,
         'data-nonce' : nonce,
         class : 'efi-choose-image'
-    }).html("<i class='dashicons dashicons-plus'></i> <br> add image</a>")
+    }).html("<i class='dashicons dashicons-plus'></i> <br> " + efi_strings.add_image + "</a>")
 
     efi_thumbnail.find('.efi-images').html(choose_image);
 
