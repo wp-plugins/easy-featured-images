@@ -2,7 +2,7 @@
 /*
 Plugin Name:       Easy Featured Images
 Description:       Adds featured images to the admin post lists and allows you to add and modify them without loading the post's edit page.
-Version:           1.1.0
+Version:           1.1.1
 Author:            Daniel Pataki
 Author URI:        http://danielpataki.com/
 License:           GPLv2 or later
@@ -79,6 +79,7 @@ function efi_enqueue_assets( $page ) {
  * by splitting the original array.
  *
  * @param array $columns The columns contained in the post list
+ * @return  array The final array of columns to use
  * @author Daniel Pataki
  * @since 1.0.0
  *
@@ -90,12 +91,13 @@ function efi_table_head( $columns ) {
 	$new['_post_thumbnail'] = 'Image';
 
 	$columns = array_merge( $checkbox, $new, $columns );
-	return $columns;
 
 	// Disable default WooCommerce thumbnail
 	if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 		unset( $columns['thumb'] );
 	}
+
+	return $columns;
 
 }
 

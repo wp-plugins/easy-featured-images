@@ -15,6 +15,8 @@ Easy Featured Images allows you to assign featured images to posts much more eff
 
 With the plugin enabled you can do this from the post list screen. Everything words via AJAX so images are assigned instantly, without having to wait for pages to load. It uses the regular WordPress media box making the plugin 100% WordPress awesome.
 
+Easy Featured Images also support **WooCommerce**, yay! 
+
 Thanks to [Tom McFarlin](https://tommcfarlin.com/the-wordpress-media-uploader/) for the basis of the Javascript that initiates the media upoader.
 
 == Installation ==
@@ -35,6 +37,10 @@ If you are having trouble, take a look at the [Managing Plugins](http://codex.wo
 1. The post edit screen
 
 == Changelog ==
+
+= 1.1.1 =
+
+* I made an oopsie which made WooCommerce thumbnails show up as well as well as our own. I have disciplined myself sufficiently.
 
 = 1.1.0 =
 
