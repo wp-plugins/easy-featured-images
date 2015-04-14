@@ -36,7 +36,12 @@ If you are having trouble, take a look at the [Managing Plugins](http://codex.wo
 
 == Changelog ==
 
+= 1.1.0 =
 
-= 1.0 =
+* Now supports all post types
+* Added WooCommerce support - Easy Featured Images will replace the WooCommerce thumbnail in the admin list
+* Added a bit more documentation inside the main plugin file
+
+= 1.0.0 =
 
 * Initial Release.
