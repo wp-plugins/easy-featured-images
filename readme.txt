@@ -17,6 +17,14 @@ With the plugin enabled you can do this from the post list screen. Everything wo
 
 Easy Featured Images also support **WooCommerce**, yay!
 
+You can use the `efi/post_types` filter to modify the array of post types that the plugin's functionality is assigned to. Return the final list of post types you want the plugin to be applied to:
+
+`add_filter( 'efi/post_types', 'my_post_type_images' );
+function my_post_type_images( $post_types ) {
+    unset( $post_types['page'] );
+}`
+
+
 = Thanks =
 
 * [Tom McFarlin](https://tommcfarlin.com/the-wordpress-media-uploader/) for the basis of the Javascript that initiates the media uploader
@@ -42,6 +50,11 @@ If you are having trouble, take a look at the [Managing Plugins](http://codex.wo
 2. WooCommerce Support
 
 == Changelog ==
+
+= 1.1.3 =
+
+* Added hook for modifying the post types
+* Added Hungarian translation
 
 = 1.1.2 =
 

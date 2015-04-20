@@ -2,17 +2,17 @@
 /*
 Plugin Name:       Easy Featured Images
 Description:       Adds featured images to the admin post lists and allows you to add and modify them without loading the post's edit page.
-Version:           1.1.2
+Version:           1.1.3
 Author:            Daniel Pataki
 Author URI:        http://danielpataki.com/
 License:           GPLv2 or later
 */
 
-add_action('init', 'efi_load_textdomain');
+add_action('plugins_loaded', 'efi_load_textdomain');
 
 /**
  * Load Text Domain
- * 
+ *
  * Loads the textdomain for translations
  *
  */
@@ -25,22 +25,27 @@ add_action( 'init', 'efi_admin_list_modifications' ) ;
 
 /**
  * Modify Admin Lists
- * 
+ *
  * This function adds the custom columns and column
- * content to the admin tables. Normally we would not 
- * need to do this inside a function hooked to init. 
+ * content to the admin tables. Normally we would not
+ * need to do this inside a function hooked to init.
  * The reason it is done like this is so we can access
- * the post types, since they are registered on init. 
+ * the post types, since they are registered on init.
  * This way we can hook into all post types.
- * 
+ *
+ * The efi/post_types hook can be used to filter the
+ * post types.
+ *
  * @author Daniel Pataki
  * @since 1.1.0
- * 
+ *
  */
 function efi_admin_list_modifications() {
 
 	$post_types = get_post_types( array( 'public' => true ) );
 	unset( $post_types['attachment'] );
+
+	$post_types = apply_filters( 'efi/post_types', $post_types );
 
 	foreach( $post_types as $post_type ) {
 		add_filter( 'manage_edit-' . $post_type . '_columns', 'efi_table_head', 20 );
@@ -126,7 +131,7 @@ function efi_table_head( $columns ) {
  * @param $column string
  * @author Daniel Pataki
  * @since 1.0.0
- * 
+ *
  */
 function efi_column_content( $column_slug, $post_id ) {
 
@@ -156,4 +161,3 @@ function efi_column_content( $column_slug, $post_id ) {
 	}
 
 }
-
