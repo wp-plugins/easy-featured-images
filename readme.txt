@@ -2,7 +2,7 @@
 Contributors: danielpataki
 Tags: media, featured images, ajax
 Requires at least: 3.5.0
-Tested up to: 4.1.1
+Tested up to: 4.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -50,6 +50,10 @@ If you are having trouble, take a look at the [Managing Plugins](http://codex.wo
 2. WooCommerce Support
 
 == Changelog ==
+
+= 1.1.4 =
+
+* WordPress 4.2 compatibility check
 
 = 1.1.3 =
 

@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Easy Featured Images v1.1.3\n"
+"Project-Id-Version: Easy Featured Images v1.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-20 08:11+0100\n"
-"PO-Revision-Date: 2015-04-20 08:11+0100\n"
+"POT-Creation-Date: 2015-04-21 09:16+0100\n"
+"PO-Revision-Date: 2015-04-21 09:16+0100\n"
 "Last-Translator: Daniel Pataki <contact@tastique.org>\n"
 "Language-Team: Daniel Pataki\n"
 "MIME-Version: 1.0\n"
@@ -19,21 +19,21 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 
 # @ easy-featured-images
-#: ../easy-featured-images.php:83
+#: ../easy-featured-images.php:86
 msgid "Browse Or Upload An Image"
 msgstr "Browse Or Upload An Image"
 
 # @ easy-featured-images
-#: ../easy-featured-images.php:84
+#: ../easy-featured-images.php:87
 msgid "Set featured image"
 msgstr "Set featured image"
 
 # @ easy-featured-images
-#: ../easy-featured-images.php:86 ../easy-featured-images.php:151
+#: ../easy-featured-images.php:89 ../easy-featured-images.php:154
 msgid "add image"
 msgstr "add image"
 
 # @ easy-featured-images
-#: ../easy-featured-images.php:87 ../easy-featured-images.php:156
+#: ../easy-featured-images.php:90 ../easy-featured-images.php:159
 msgid "remove"
 msgstr "remove"

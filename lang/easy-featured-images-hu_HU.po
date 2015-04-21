@@ -4,13 +4,12 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-21 09:15+0100\n"
 "PO-Revision-Date: 2015-04-21 09:15+0100\n"
-"Last-Translator: Thomas Meyer\n"
-"Language-Team: Thomas Meyer\n"
-"Language: German\n"
+"Last-Translator: Daniel Pataki <hello@danielpataki.com>\n"
+"Language-Team: Daniel Pataki\n"
+"Language: Hungarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: CSL v1.x\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
@@ -22,19 +21,19 @@ msgstr ""
 # @ easy-featured-images
 #: ../easy-featured-images.php:86
 msgid "Browse Or Upload An Image"
-msgstr "Beitragsbild festlegen"
+msgstr "Tallózás / Feltöltés"
 
 # @ easy-featured-images
 #: ../easy-featured-images.php:87
 msgid "Set featured image"
-msgstr "Beitragsbild festlegen"
+msgstr "Kiemelt kép beállítása"
 
 # @ easy-featured-images
 #: ../easy-featured-images.php:89 ../easy-featured-images.php:154
 msgid "add image"
-msgstr "hinzufügen"
+msgstr "kép hozzáadása"
 
 # @ easy-featured-images
 #: ../easy-featured-images.php:90 ../easy-featured-images.php:159
 msgid "remove"
-msgstr "entfernen"
+msgstr "eltávolítás"

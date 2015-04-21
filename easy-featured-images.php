@@ -2,7 +2,7 @@
 /*
 Plugin Name:       Easy Featured Images
 Description:       Adds featured images to the admin post lists and allows you to add and modify them without loading the post's edit page.
-Version:           1.1.3
+Version:           1.1.4
 Author:            Daniel Pataki
 Author URI:        http://danielpataki.com/
 License:           GPLv2 or later
@@ -14,6 +14,9 @@ add_action('plugins_loaded', 'efi_load_textdomain');
  * Load Text Domain
  *
  * Loads the textdomain for translations
+ *
+ * @author Daniel Pataki
+ * @since 1.1.0
  *
  */
 function efi_load_textdomain() {
