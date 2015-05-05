@@ -2,13 +2,61 @@
 /*
 Plugin Name:       Easy Featured Images
 Description:       Adds featured images to the admin post lists and allows you to add and modify them without loading the post's edit page.
-Version:           1.0.0
+Version:           1.1.5
 Author:            Daniel Pataki
 Author URI:        http://danielpataki.com/
 License:           GPLv2 or later
 */
 
+add_action('plugins_loaded', 'efi_load_textdomain');
 
+/**
+ * Load Text Domain
+ *
+ * Loads the textdomain for translations
+ *
+ * @author Daniel Pataki
+ * @since 1.1.0
+ *
+ */
+function efi_load_textdomain() {
+	load_plugin_textdomain( 'easy-featured-images', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
+}
+
+
+add_action( 'init', 'efi_admin_list_modifications', 99 ) ;
+
+/**
+ * Modify Admin Lists
+ *
+ * This function adds the custom columns and column
+ * content to the admin tables. Normally we would not
+ * need to do this inside a function hooked to init.
+ * The reason it is done like this is so we can access
+ * the post types, since they are registered on init.
+ * This way we can hook into all post types.
+ *
+ * The efi/post_types hook can be used to filter the
+ * post types.
+ *
+ * @author Daniel Pataki
+ * @since 1.1.0
+ *
+ */
+function efi_admin_list_modifications() {
+
+	$post_types = get_post_types( array( 'public' => true ) );
+	unset( $post_types['attachment'] );
+
+	$post_types = apply_filters( 'efi/post_types', $post_types );
+
+	foreach( $post_types as $post_type ) {
+		add_filter( 'manage_edit-' . $post_type . '_columns', 'efi_table_head', 20 );
+		add_action( 'manage_' . $post_type . '_posts_custom_column', 'efi_column_content', 10, 2 );
+	}
+
+
+}
 
 add_action( 'admin_enqueue_scripts', 'efi_enqueue_assets' );
 /**
@@ -21,10 +69,11 @@ add_action( 'admin_enqueue_scripts', 'efi_enqueue_assets' );
  * javascript and to pass the admin ajax url.
  *
  * @param string $page The name of the page we're on.
+ * @author Daniel Pataki
+ * @since 1.0.0
  *
  */
 function efi_enqueue_assets( $page ) {
-
     if ( 'edit.php' != $page ) {
         return;
     }
@@ -36,14 +85,15 @@ function efi_enqueue_assets( $page ) {
 	wp_localize_script( 'efi_scripts', 'efi_strings', array(
 		'browse_images' => __( 'Browse Or Upload An Image', 'easy-featured-images' ),
 		'select_image' =>  __( 'Set featured image', 'easy-featured-images' ),
-		'ajaxurl' =>  admin_url( 'admin-ajax.php' )
+		'ajaxurl' =>  admin_url( 'admin-ajax.php' ),
+		'add_image' =>  __( 'add image', 'easy-featured-images' ),
+		'remove' =>  __( 'remove', 'easy-featured-images' )
 	));
 
 }
 
 
 
-add_filter( 'manage_post_posts_columns', 'efi_table_head' );
 /**
  * Custom Column Headers
  *
@@ -51,6 +101,9 @@ add_filter( 'manage_post_posts_columns', 'efi_table_head' );
  * by splitting the original array.
  *
  * @param array $columns The columns contained in the post list
+ * @return  array The final array of columns to use
+ * @author Daniel Pataki
+ * @since 1.0.0
  *
  */
 function efi_table_head( $columns ) {
@@ -61,12 +114,16 @@ function efi_table_head( $columns ) {
 
 	$columns = array_merge( $checkbox, $new, $columns );
 
+	// Disable default WooCommerce thumbnail
+	if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+		unset( $columns['thumb'] );
+	}
+
 	return $columns;
 
 }
 
 
-add_action( 'manage_post_posts_custom_column', 'efi_column_content', 10, 2 );
 /**
  * Custom Column Content
  *
@@ -75,6 +132,9 @@ add_action( 'manage_post_posts_custom_column', 'efi_column_content', 10, 2 );
  * image link.
  *
  * @param $column string
+ * @author Daniel Pataki
+ * @since 1.0.0
+ *
  */
 function efi_column_content( $column_slug, $post_id ) {
 
@@ -91,12 +151,12 @@ function efi_column_content( $column_slug, $post_id ) {
 			echo "<a class='efi-choose-image' data-nonce='" . $nonce . "' href='" . get_edit_post_link( $post_id ) . "'>" . get_the_post_thumbnail( $post_id, 'medium' ) . '</a>';
 		}
 		else {
-			echo "<a class='efi-choose-image' data-nonce='" . $nonce . "' href='" . get_edit_post_link( $post_id ) . "'> <i class='dashicons dashicons-plus'></i> <br> add image</a>";
+			echo "<a class='efi-choose-image' data-nonce='" . $nonce . "' href='" . get_edit_post_link( $post_id ) . "'> <i class='dashicons dashicons-plus'></i> <br> ". __('add image','easy-featured-images') . "</a>";
 		}
 
 		echo '</div>';
 
-		echo "<a href='" . get_edit_post_link( $post_id ) . "' data-nonce='" . $nonce . "' class='efi-remove-image'><i class='dashicons dashicons-no'></i> remove</a>";
+		echo "<a href='" . get_edit_post_link( $post_id ) . "' data-nonce='" . $nonce . "' class='efi-remove-image'><i class='dashicons dashicons-no'></i> ". __( 'remove','easy-featured-images') . "</a>";
 
 		echo '</div>';
 

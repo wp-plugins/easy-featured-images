@@ -1,0 +1,28 @@
+/* TEAM */
+
+Name: Daniel Pataki
+Title: Founding Developer
+Twitter: danielpataki
+
+/* THANKS */
+
+Name: WordPress
+Website: http://wordpress.org
+For: Making WordPress
+
+Name: Tom McFarlin
+Website: https://tommcfarlin.com/the-wordpress-media-uploader/
+For: A script to work with the media uploader
+
+Name: Cole Patrick
+Website: https://unsplash.com/colepatrick
+For: A great photo
+
+Name: Thomas Meyer
+Website: https://github.com/tmconnect
+For: German translation
+
+/* META */
+Updated: 2015/04/22
+Software: WordPress
+See: http://humanstxt.org/

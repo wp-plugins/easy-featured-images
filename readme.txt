@@ -2,7 +2,7 @@
 Contributors: danielpataki
 Tags: media, featured images, ajax
 Requires at least: 3.5.0
-Tested up to: 4.1.1
+Tested up to: 4.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,21 @@ Easy Featured Images allows you to assign featured images to posts much more eff
 
 With the plugin enabled you can do this from the post list screen. Everything words via AJAX so images are assigned instantly, without having to wait for pages to load. It uses the regular WordPress media box making the plugin 100% WordPress awesome.
 
-Thanks to [Tom McFarlin](https://tommcfarlin.com/the-wordpress-media-uploader/) for the basis of the Javascript that initiates the media upoader.
+Easy Featured Images also support **WooCommerce**, yay!
+
+You can use the `efi/post_types` filter to modify the array of post types that the plugin's functionality is assigned to. Return the final list of post types you want the plugin to be applied to:
+
+`add_filter( 'efi/post_types', 'my_post_type_images' );
+function my_post_type_images( $post_types ) {
+    unset( $post_types['page'] );
+}`
+
+
+= Thanks =
+
+* [Tom McFarlin](https://tommcfarlin.com/the-wordpress-media-uploader/) for the basis of the Javascript that initiates the media uploader
+* [Cole Patrick](https://unsplash.com/colepatrick) for the fantastic photo for the plugin's featured image
+* [Thomas Meyer](https://github.com/tmconnect) for the German translation.
 
 == Installation ==
 
@@ -33,10 +47,37 @@ If you are having trouble, take a look at the [Managing Plugins](http://codex.wo
 == Screenshots ==
 
 1. The post edit screen
+2. WooCommerce Support
 
 == Changelog ==
 
+= 1.1.5 (2015-04-30) =
+* Fixed a bug that may have prevented images working for some custom post types
 
-= 1.0 =
+= 1.1.4 (2015-04-21) =
+
+* WordPress 4.2 compatibility check
+
+= 1.1.3 (2015-04-20) =
+
+* Added hook for modifying the post types
+* Added Hungarian translation
+
+= 1.1.2 =
+
+* Added proper translation support
+* Added German translation
+
+= 1.1.1 =
+
+* I made an oopsie which made WooCommerce thumbnails show up as well as well as our own. I have disciplined myself sufficiently.
+
+= 1.1.0 =
+
+* Now supports all post types
+* Added WooCommerce support - Easy Featured Images will replace the WooCommerce thumbnail in the admin list
+* Added a bit more documentation inside the main plugin file
+
+= 1.0.0 =
 
 * Initial Release.
